@@ -9,7 +9,7 @@ let users = {
     },
   };
   
-  let messages = {
+let messages = {
     1: {
       id: '1',
       text: 'Hello World',
@@ -22,7 +22,4 @@ let users = {
     },
   };
   
-module.exports = {
-    users,
-    messages,
-  };
+module.exports = {users, messages};
