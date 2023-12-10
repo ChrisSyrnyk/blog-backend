@@ -7,8 +7,8 @@ const Schema = mongoose.Schema;
 const CommentSchema = new Schema({
     content: {type: String, required: true},
     created: {type: Date, required: true},
-    user: {type: Schema.type.ObjectId, ref: "User", required: true},
-    blog_post: {type: Schema.type.ObjectId, ref: "BlogPost", required: true},
+    user: {type: Schema.Types.ObjectId, ref: "User", required: true},
+    blog_post: {type: Schema.Types.ObjectId, ref: "BlogPost", required: true},
 });
 
 //Export module

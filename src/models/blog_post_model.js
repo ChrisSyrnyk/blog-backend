@@ -6,7 +6,7 @@ const BlogPostSchema = new Schema({
     title: {type: String, required: true},
     content: {type: String, required: true},
     created: {type: Date, required: true},
-    user: {type: Schema.type.ObjectId, ref: "User", required: true},
+    user: {type: Schema.Types.ObjectId, ref: "User", required: true},
 });
 
 //Export model
