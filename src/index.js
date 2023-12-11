@@ -14,7 +14,9 @@ const BlogPosts = require('./models/blog_post_model');
 const Comments = require('./models/comment_model');
 const Users = require('./models/user_model');
 //import routes
-const routes = require('./routes');
+const UserRoutes = require('./routes/user_routes');
+const CommentRoutes = require('./routes/comment_routes');
+const BlogPostRoutes = require('./routes/blog_routes');
 
 //setup app
 const app = express();
@@ -23,7 +25,13 @@ app.use(cors());
 //setup json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//connect routes
+app.use('/users', UserRoutes);
+app.use('/comments', CommentRoutes);
+app.use('/blogposts', BlogPostRoutes);
 
+
+/*
 app.use((req, res, next) => {
     req.context = {
       models,
@@ -35,6 +43,7 @@ app.use((req, res, next) => {
   app.use('/session', routes.session);
   app.use('/users', routes.user);
   app.use('/messages', routes.message);
+*/
 
 app.listen(process.env.PORT, () =>
   console.log(`Example app listening on port ${process.env.PORT}!`),
