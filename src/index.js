@@ -31,20 +31,6 @@ app.use('/comments', CommentRoutes);
 app.use('/blogposts', BlogPostRoutes);
 
 
-/*
-app.use((req, res, next) => {
-    req.context = {
-      models,
-      user: models.users[1], //replace with real user in future
-    };
-    next();
-  });
-
-  app.use('/session', routes.session);
-  app.use('/users', routes.user);
-  app.use('/messages', routes.message);
-*/
-
 app.listen(process.env.PORT, () =>
   console.log(`Example app listening on port ${process.env.PORT}!`),
 );
