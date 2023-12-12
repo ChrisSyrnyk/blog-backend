@@ -36,5 +36,5 @@ app.use('/comments', CommentRoutes);
 app.use('/blogposts', BlogPostRoutes);
 
 app.listen(process.env.PORT, () =>
-  console.log(`Example app listening on port ${process.env.PORT}!`),
+  console.log(`Blog Backend listening on port ${process.env.PORT}!`),
 );
