@@ -14,4 +14,7 @@ router.get('/:CommentId', (req, res) => {
     //return res.send(req.context.models.users[req.params.userId]);
 });
 
+//post comment route
+//router.post('/comment', postComment);
+
 module.exports = router;
