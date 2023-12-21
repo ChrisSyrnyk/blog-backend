@@ -18,7 +18,6 @@ exports.createBlogPost = async (req, res) => {
                         created,
                         user,
                     })
-                    console.log(blog);
                     res.status(200).json({blog});
                 } catch(error){
                     res.status(500).json({message: error});
@@ -32,10 +31,8 @@ exports.createBlogPost = async (req, res) => {
 } 
 
 exports.getBlogPost = async (req, res) => {
-    console.log(req.params.BlogPostId)
     const blog_post = await BlogPost.findById(req.params.BlogPostId).populate('user');
     const comments = await Comment.find({blog_post: req.params.BlogPostId}).populate('user');
-    console.log(blog_post);
     if(blog_post === null){
         //No results
         res.status(500).json({message: 'No results'});
@@ -51,7 +48,6 @@ exports.getBlogPosts = async ( req, res) => {
         //No results
         res.status(500).json({message: 'No results'})
     } else {
-	console.log('ran');
         res.json(blog_posts);
     }
 }

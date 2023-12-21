@@ -21,10 +21,8 @@ exports.createComment = async (req, res) => {
                         blog_post,
                     })
                     res.status(200).json({message: 'comment post succesful'})
-		    console.log('comment post success');
                 } catch(error){
                     res.status(500).json({message: error});
-		    console.log('comment post failed');
                 }
             } else {
                 //Forbidden
@@ -41,10 +39,6 @@ exports.deleteComment = async (req, res) => {
         } else {
             const comment = await Comment.findById(req.params.CommentId);
             const user = await User.findById(comment.user);
-            console.log(comment);
-            console.log(user);
-            console.log(authData.id);
-            console.log(user.id);
 
             if (user.id === authData.id){
                 //access allowed
