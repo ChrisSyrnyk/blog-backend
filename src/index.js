@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 const compression = require("compression");
+const helmet = require("helmet");
 
 //import models
 const BlogPost = require('./models/blog_post_model');
@@ -32,6 +33,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Compress all routes
 app.use(compression()); 
+//add helmet to the middleware chain
+app.use(helmet());
 //connect routes
 app.use('/', HomeRoutes);
 app.use('/users', UserRoutes);
