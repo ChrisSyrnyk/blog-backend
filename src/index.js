@@ -16,6 +16,7 @@ const UserRoutes = require('./routes/user_routes');
 const CommentRoutes = require('./routes/comment_routes');
 const BlogPostRoutes = require('./routes/blog_routes');
 const HomeRoutes = require('./routes/home_routes');
+const RateLimit = require("express-rate-limit");
 
 //setup mongo connection
 const mongoDb = process.env.MONGO_KEY;
@@ -34,6 +35,16 @@ app.use(express.urlencoded({ extended: true }));
 // Compress all routes
 app.use(compression()); 
 //add helmet to the middleware chain
+// Set up rate limiter: maximum of twenty requests per minute
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
+// Apply rate limiter to all requests
+app.use(limiter);
+
+
+
 app.use(helmet());
 //connect routes
 app.use('/', HomeRoutes);
