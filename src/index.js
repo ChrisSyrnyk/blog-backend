@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
+const compression = require("compression");
 
 //import models
 const BlogPost = require('./models/blog_post_model');
@@ -29,11 +30,14 @@ app.use(cors());
 //setup json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Compress all routes
+app.use(compression()); 
 //connect routes
 app.use('/', HomeRoutes);
 app.use('/users', UserRoutes);
 app.use('/comments', CommentRoutes);
 app.use('/blogposts', BlogPostRoutes);
+
 
 app.listen(process.env.PORT, () =>
   console.log(`Blog Backend listening on port ${process.env.PORT}!`),
